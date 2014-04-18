@@ -3,8 +3,41 @@
 Posts = new Meteor.Collection('posts');
 //allows for client side inserts after setting insecure to zero
 Posts.allow({
-	insert: function(userId, doc){
-		//only allow posting if you are logged in
-		return !! userId;
+	update: ownsDocument, 
+	remove: ownsDocument
+});
+
+Posts.deny({
+	update: function(userId, post, fieldNames) {
+		// user can only edit the following fields
+		// uses Underscore.js for additional functionality
+		return(_.without(fieldNames, 'url', 'title').length>0);
+	}
+})
+
+Meteor.methods({
+	post: function(postAttributes){
+		var user = Meteor.user(),
+		postWithSameLink = Posts.findOne({url:postAttributes.url});
+
+		// ensures user is logged in
+		if (!user)
+			throw new Meteor.Error(401, 'You must be logged in to post');
+		// ensures a post title
+		if (!postAttributes.title)
+			throw new Meteor.Error(422, "Please fill in a headline");
+		//checks there are no posts with same link url
+		if (postAttributes.url && postWithSameLink){
+			throw new Meteor.Error(302, 
+				'This url has already been posted',
+				postWithSameLink._id);
+		}
+		var post = _.extend(_.pick(postAttributes, 'url', 'title', 'message'),{
+			userId: user._id,
+			author: user.username,
+			submitted: new Date().getTime()
+		});
+		var postId = Posts.insert(post);
+		return postId;
 	}
 });
