@@ -4,9 +4,9 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-insecure
 bootstrap
 iron-router
 spin
 accounts-ui-bootstrap-dropdown
 accounts-password
+accounts-ui
