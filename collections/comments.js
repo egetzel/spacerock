@@ -7,7 +7,7 @@ Meteor.methods({
 
 		if (!user)
 			throw new Meteor.Error(422, 'You have to be logged in to comment');
-		if (!post)
+		if (!commentAttributes.body)
 			throw new Meteor.Error(422, 'You have to write to post');
 		if (!post)
 			throw new Meteor.Error(422, 'You have to comment on a post');

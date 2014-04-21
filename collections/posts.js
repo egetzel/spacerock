@@ -45,7 +45,7 @@ Meteor.methods({
 		var postId = Posts.insert(post);
 		return postId;
 	},
-	upvotes: function(postId) {
+	upvote: function(postId) {
 		var user = Meteor.user();
 		if (!user)
 			throw new Meteor.Error(401, 'You need to login to upvote');
