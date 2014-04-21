@@ -48,7 +48,8 @@ if (Posts.find().count()===0){
 		author: edaan.profile.name,
 		url: 'http://edaangetzel.wordpress.com/2014/04/04/what-is-productivity/',
 		submitted: now - 10 *3600*1000,
-		commentsCount: 0
+		commentsCount: 0,
+		upvoters: [], votes:0
 	});
 	Posts.insert({
 		title: 'Welcome to Meteor... and other ramblings',
@@ -56,7 +57,8 @@ if (Posts.find().count()===0){
 		author: edaan.profile.name,
 		url: 'http://edaangetzel.wordpress.com/2014/04/16/welcome-to-meteor-and-other-ramblings/',
 		submitted: now -12 *3600*1000,
-		commentsCount: 0
+		commentsCount: 0,
+		upvoters: [], votes: 0
 	});
 
 	for (var i=0; i<10; i++) {
@@ -66,7 +68,8 @@ if (Posts.find().count()===0){
 			userId: edaan._id,
 			url: 'http://google.com/?q=test-'+i,
 			submitted: now-i*3600*1000,
-			commentsCount: 0
+			commentsCount: 0,
+			upvoters: [], votes: 0
 		});
 	}
 }
