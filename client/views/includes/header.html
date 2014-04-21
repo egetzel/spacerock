@@ -9,6 +9,12 @@
       <a class="brand" href="{{pathFor 'postsList'}}">SpaceRockLens</a>
       <div class="nav-collapse collapse">
         <ul class="nav">
+        <li>
+          <a href="{{pathFor 'newPosts'}}">New</a>
+        </li>
+        <li>
+          <a href="{{pathFor 'bestPosts'}}">Best</a>
+        </li>
         {{#if currentUser}}
         <li>
           <a href="{{pathFor 'postSubmit'}}">Submit Post</a>
