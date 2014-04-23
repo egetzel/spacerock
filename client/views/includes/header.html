@@ -3,12 +3,35 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only"><h1 class = 'brand'>SpaceRockLens</h1></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+      <h1 class = 'brand'><a href="/">SpaceRockLens</a></h1>
+      <ul class='nav col-xs-9 col-md-9 col-lg-9 pull-left' id='menuButton'>
+        <ul class="nav navbar-nav inline">
+          <li class = "{{activeRouteClass 'about'}}">
+            <a href="/about">About</a>
+          </li>
+          {{#if currentUser}}
+          <li class="{{activeRouteClass 'postSubmit'}}">
+            <a href="{{pathFor 'postSubmit'}}">Submit Post</a>
+          </li>
+          <li class="dropdown">
+            {{> notifications}}
+          </li>
+          {{/if}}
+          <li class="{{activeRouteClass 'home' 'newPosts'}}">
+            <a href="{{pathFor 'newPosts'}}">What's New</a>
+          </li>
+          <li class="{{activeRouteClass 'bestPosts'}}">
+            <a href="{{pathFor 'bestPosts'}}">Trending</a>
+          </li>
+          <li>
+            <form class="navbar-form navbar-nav navbar-left" role="search">
+              <input type="text" class="form-control" placeholder="Search">
+              <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+          </li>
+        </ul>
+
+      </ul>
       <ul class="nav col-xs-3 col-md-3 col-lg-3 pull-right" id='loginBox'>
           <li>{{> loginButtons }}</li>
       </ul>
@@ -16,28 +39,7 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav inline">
-        <li class="{{activeRouteClass 'home' 'newPosts'}}">
-          <a href="{{pathFor 'newPosts'}}">New</a>
-        </li>
-        <li class="{{activeRouteClass 'bestPosts'}}">
-          <a href="{{pathFor 'bestPosts'}}">Best</a>
-        </li>
-        {{#if currentUser}}
-        <li class="{{activeRouteClass 'postSubmit'}}">
-          <a href="{{pathFor 'postSubmit'}}">Submit Post</a>
-        </li>
-        <li class="dropdown">
-          {{> notifications}}
-        </li>
-        {{/if}}
-      <li>
-        <form class="navbar-form navbar-nav navbar-left" role="search">
-          <input type="text" class="form-control" placeholder="Search">
-          <button type="submit" class="btn btn-default">Submit</button>
-        </form>
-      </li>
-      </ul>
+      
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
