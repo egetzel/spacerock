@@ -1,3 +1,9 @@
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 .grid-block, .main, .post, .comments li, .comment-form {
   background: #fff;
   -webkit-border-radius: 3px;
@@ -24,10 +30,6 @@ body {
     -ms-border-radius: 0px 0px 3px 3px;
     -o-border-radius: 0px 0px 3px 3px;
     border-radius: 0px 0px 3px 3px; }
-
-/*#loginBox{
-  margin-left: -5px;
-}*/
 
 #spinner {
   height: 300px; }
@@ -136,8 +138,15 @@ a.dropdown-toggle {
 
 #login-buttons-google {
   background-color: #F90101;
+  font-family: verdana;
 }
 
-#login-buttons-weibo {
-  
+#menuButton {
+  padding-top: 10px;
+  height: 20px;
+}
+
+h1{
+  padding-top: 0px;
+  position: relative;
 }
